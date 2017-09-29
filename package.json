@@ -27,13 +27,12 @@
   },
   "homepage": "https://github.com/devmapal/ng2-django-channels-demultiplexing#readme",
   "peerDependencies": {
-    "@angular/core": "2.x"
+    "@angular/core": "^4.0.3"
   },
   "devDependencies": {
-    "@angular/core": "2.x",
-    "@types/core-js": "^0.9.35",
-    "rxjs": "5.x",
-    "typescript": "2.x",
-    "zone.js": ">=0.6.0"
+    "@angular/core": "^4.0.3",
+    "rxjs": "^5.0.1",
+    "typescript": "2.3.4",
+    "zone.js": "^0.8.9"
   }
 }
