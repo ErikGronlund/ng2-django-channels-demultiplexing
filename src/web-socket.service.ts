@@ -10,11 +10,15 @@ export class WebSocketService {
 
   constructor(config: WebSocketServiceConfig) {
     this.wsObservable = Observable.create((observer: any) => {
-      this.ws = new WebSocket(config.websocket_url);
- 
+      const token = config.tokenGetter ? config.tokenGetter() : null;
+      const tokenId = config.tokenId;
+      const webSocketUrl = (token && tokenId) ? config.websocket_url + '?' + tokenId + '=' + token : config.websocket_url;
+
+      this.ws = new WebSocket(webSocketUrl);
+
       this.ws.onopen = (event) => {
       };
- 
+
       this.ws.onclose = (event) => {
         if (event.wasClean) {
           observer.complete();
@@ -22,15 +26,15 @@ export class WebSocketService {
           observer.error(event);
         }
       };
- 
+
       this.ws.onerror = (event) => {
         observer.error(event);
       }
- 
+
       this.ws.onmessage = (event) => {
         observer.next(event.data);
       }
- 
+
       return () => {
         this.ws.close();
       };
