@@ -1,6 +1,6 @@
 {
   "name": "ng2-django-channels-demultiplexing",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Angular 2 library for interacting with a Django Channels demultiplexing backend.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devmapal/ng2-django-channels-demultiplexing.git"
+    "url": "git+https://github.com/ErikGronlund/ng2-django-channels-demultiplexing.git"
   },
   "keywords": [
     "angular",
@@ -23,9 +23,9 @@
   "author": "Fabian Schaffert",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/devmapal/ng2-django-channels-demultiplexing/issues"
+    "url": "https://github.com/ErikGronlund/ng2-django-channels-demultiplexing/issues"
   },
-  "homepage": "https://github.com/devmapal/ng2-django-channels-demultiplexing#readme",
+  "homepage": "https://github.com/ErikGronlund/ng2-django-channels-demultiplexing#readme",
   "peerDependencies": {
     "@angular/core": "^4.0.3"
   },
