@@ -8,6 +8,7 @@ import { WebSocketStream } from './web-socket-stream';
 export class WebSocketDemultiplexerService {
   private eventByStream: Map<string, EventEmitter<Object>>;
   private webSocketService: WebSocketService;
+  private isWebsocketCreated: boolean = false;
 
   constructor(webSocketService: WebSocketService) {
     this.webSocketService = webSocketService;
@@ -44,6 +45,11 @@ export class WebSocketDemultiplexerService {
   }
 
   subscribe(stream: string, callback: WebSocketDemultiplexerCallback): void {
+    if (!this.isWebsocketCreated) {
+      this.webSocketService.setupWebSocket();
+      this.isWebsocketCreated = true;
+    }
+
     if(!this.eventByStream.has(stream)) {
       this.eventByStream.set(stream, new EventEmitter());
     }

@@ -7,12 +7,17 @@ import { WebSocketServiceConfig } from './web-socket-service-config';
 export class WebSocketService {
   private ws: WebSocket;
   private wsObservable: Observable<any>;
+  private config: WebSocketServiceConfig;
 
   constructor(config: WebSocketServiceConfig) {
+    this.config = config;
+  }
+
+  setupWebSocket(): void {
     this.wsObservable = Observable.create((observer: any) => {
-      const token = config.tokenGetter ? config.tokenGetter() : null;
-      const tokenId = config.tokenId;
-      const webSocketUrl = (token && tokenId) ? config.websocket_url + '?' + tokenId + '=' + token : config.websocket_url;
+      const token = this.config.tokenGetter ? this.config.tokenGetter() : null;
+      const tokenId = this.config.tokenId;
+      const webSocketUrl = (token && tokenId) ? this.config.websocket_url + '?' + tokenId + '=' + token : this.config.websocket_url;
 
       this.ws = new WebSocket(webSocketUrl);
 
